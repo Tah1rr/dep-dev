@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "0.0.0.0": "^0.0.1-pre.alpha.1",
+    "react-icons": "^4.12.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev:client": "npm --prefix client run dev",
+    "build:client": "npm --prefix client run build",
+    "dev:server": "npm --prefix server run dev",
+    "dev": "npx concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "pm2:start": "npm --prefix server run pm2:start",
+    "pm2:stop": "npm --prefix server run pm2:stop",
+    "pm2:logs": "npm --prefix server run pm2:logs",
+    "pm2:list": "npm --prefix server run pm2:list",
+    "install:server": "npm --prefix server install",
+    "install:client": "npm --prefix client install",
+    "postinstall": "npm run install:server && npm run install:client",
+    "build": "npm run build:client && npm run install:server",
+    "start:prod": "npx concurrently \"npm run pm2:start\" \"serve -s build\""
+  }
+}
+
